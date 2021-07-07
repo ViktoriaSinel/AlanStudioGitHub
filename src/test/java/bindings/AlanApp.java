@@ -59,6 +59,10 @@ public class AlanApp {
 
     @Then("^I choose an empty project$")
     public void iChooseAnEmptyProject() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+        }
         chromeDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         chromeDriver.findElement(By.xpath("//body/div[@id='react-confirm-alert']/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]")).click();
     }
@@ -110,8 +114,12 @@ public class AlanApp {
         }
         chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]")).click();
         chromeDriver.findElement(By.xpath("//body/div[@id='react-confirm-alert']/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]")).click();
-        chromeDriver.findElement(By.xpath("//body[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]")).click();
-        chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]")).click();
+        chromeDriver.findElement(By.xpath("//div[contains(text(),'iciclesorganizer')]")).click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+        }
+        chromeDriver.findElement(By.xpath("//body/div[@id='react-confirm-alert']/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]")).click();
         chromeDriver.findElement(By.xpath("//div[contains(text(),'Octo-branch')]")).click();
         try {
             Thread.sleep(1000);
@@ -123,18 +131,19 @@ public class AlanApp {
     @And("^I add a new script and push it back to github$")
     public void iAddANewScriptAndPushItBackToGithub() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
         }
-        chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/i[1]")).click();
+        chromeDriver.findElement(By.xpath("//div[contains(text(),'Add Script')]")).click();
         chromeDriver.findElement(By.xpath("//body/div[@id='react-confirm-alert']/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[11]")).click();
         chromeDriver.findElement(By.xpath("//body/div[@id='react-confirm-alert']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]")).click();
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
         }
-        chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[2]")).click();
+        WebElement pushBtn = chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[2]"));
+        pushBtn.click();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -165,7 +174,9 @@ public class AlanApp {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
         }
-        chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/span[1]/i[1]")).click();
-        chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/span[1]")).click();
+        chromeDriver.findElement(By.xpath("//body/div[@id='toast-container']/div[1]/i[1]")).click();
+        chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/span[1]/i[1]")).click();
+        chromeDriver.findElement(By.xpath("//body/div[@id='container']/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/span[1]")).click();
+        chromeDriver.close();
     }
 }
