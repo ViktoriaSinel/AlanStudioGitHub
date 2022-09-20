@@ -1,6 +1,5 @@
 // {Name: Bitcoin}
 // {Description: Gives Bitcoin price information, including visual charts of Bitcoin prices over the past week, month, and year.}
-//new comment
 
 title('Bitcoin');
 
